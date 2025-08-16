@@ -303,13 +303,13 @@ body.shooting-cursor {
   font-size: 11pt;
   margin-bottom: 2px;
 }
-.job-title span {
+.job-title-span {
   font-weight: bold;
 }
 .company {
   font-size: 11pt;
 }
-.company span {
+.company-name {
   font-weight: bold;
 }
 .experience {

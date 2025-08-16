@@ -153,10 +153,10 @@ function createExperience(experiences) {
               .map(
                 (exp) => `
               <div class="experience-item">
-                <div class="job-title"><span>${exp.title}</span>, ${
+                <div class="job-title"><span class="job-title-span">${exp.title}</span>, ${
                   exp.period
                 }</div>
-                <div class="company"><span>${exp.company}</span>, ${
+                <div class="company"><span class="company-name">${exp.company}</span>, ${
                   exp.location
                 }</div>
                 <div class="job-description">
