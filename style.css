@@ -1,3 +1,14 @@
+body.game-mode .top-buttons,
+body.game-mode .top-buttons * {
+  cursor: auto !important;
+}
+body.game-mode .print-btn,
+body.game-mode .lang-switch {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  filter: grayscale(0.7);
+}
 @media print {
   body {
     padding: 0 !important;
@@ -47,6 +58,11 @@ body {
   align-items: center;
   margin-bottom: 18px;
   box-sizing: border-box;
+}
+@media (max-width: 1100px) {
+  .instructions {
+    display: none !important;
+  }
 }
 
 @media (max-width: 800px) {
@@ -198,6 +214,9 @@ body.shooting-cursor {
   }
 }
 
+#score {
+  margin-left: -14px;
+}
 @media (max-width: 600px) {
   #score {
     display: flex;
@@ -343,7 +362,6 @@ body.shooting-cursor {
 .languages strong {
   font-weight: bold;
 }
-/* Botões de topo consistentes */
 .lang-switch,
 .print-btn,
 .destroy-btn,
@@ -377,7 +395,6 @@ body.shooting-cursor {
 #exitGame:hover {
   opacity: 1;
 }
-/* Game Styles */
 body.game-mode {
   overflow-y: auto;
   height: auto;
@@ -419,9 +436,15 @@ body.game-mode {
   left: 10px;
   z-index: 1001;
   display: none;
-  background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 5px;
+}
+.score-label,
+#score-value {
+  display: inline;
+  font-size: 12px;
+  color: #444;
+  font-weight: normal;
 }
 #score {
   font-size: 12px;
@@ -429,9 +452,12 @@ body.game-mode {
   font-weight: normal;
   color: #444;
 }
-#instructions {
-  font-size: 11px;
-  color: #666;
+.instructions {
+  font-size: 12px;
+  color: #444;
+  font-weight: normal;
+  margin-bottom: 4px;
+  margin-left: -14px;
 }
 #gameContainer {
   position: relative;

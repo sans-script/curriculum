@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function () {
+  if (!isMobile()) {
+    var gbControls = document.getElementById("gameboy-controls");
+    if (gbControls) gbControls.parentNode.removeChild(gbControls);
+  }
+});
 document.addEventListener("mousedown", function (e) {
   if (
     e.button === 0 &&
@@ -25,7 +31,7 @@ function showGameboyControls(show) {
 
 function isMobile() {
   return (
-    window.innerWidth <= 800 ||
+    window.innerWidth <= 800 &&
     /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
       navigator.userAgent
     )
@@ -226,42 +232,47 @@ function renderCurriculum(lang) {
   document.getElementById("lang-switch").textContent =
     lang === "en" ? "PT" : "EN";
 }
-
 function wrapTextInWords() {
   if (words.length) return;
-  const root = document.getElementById("curriculum-root");
-  const walker = document.createTreeWalker(
-    root,
-    NodeFilter.SHOW_TEXT,
-    null,
-    false
-  );
-  const textNodes = [];
-  let node;
-  while ((node = walker.nextNode())) {
-    if (node.textContent.trim()) textNodes.push(node);
-  }
+  const roots = [
+    document.getElementById("curriculum-root"),
+    document.querySelector(".instructions"),
+  ].filter(Boolean);
   words = [];
-  textNodes.forEach((textNode) => {
-    const wordsArray = textNode.textContent.split(/(\s+)/);
-    const fragment = document.createDocumentFragment();
-    wordsArray.forEach((word) => {
-      if (word.trim()) {
-        const wordSpan = document.createElement("span");
-        wordSpan.className = "word";
-        wordSpan.textContent = word;
-        wordSpan.id = `word-${words.length}`;
-        fragment.appendChild(wordSpan);
-        words.push({
-          element: wordSpan,
-          text: word,
-          destroyed: false,
-        });
-      } else {
-        fragment.appendChild(document.createTextNode(word));
-      }
+  roots.forEach((root) => {
+    if (!root) return;
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    const textNodes = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.textContent.trim()) textNodes.push(node);
+    }
+    textNodes.forEach((textNode) => {
+      const wordsArray = textNode.textContent.split(/(\s+)/);
+      const fragment = document.createDocumentFragment();
+      wordsArray.forEach((word) => {
+        if (word.trim()) {
+          const wordSpan = document.createElement("span");
+          wordSpan.className = "word";
+          wordSpan.textContent = word;
+          wordSpan.id = `word-${words.length}`;
+          fragment.appendChild(wordSpan);
+          words.push({
+            element: wordSpan,
+            text: word,
+            destroyed: false,
+          });
+        } else {
+          fragment.appendChild(document.createTextNode(word));
+        }
+      });
+      textNode.parentNode.replaceChild(fragment, textNode);
     });
-    textNode.parentNode.replaceChild(fragment, textNode);
   });
   console.log(`Found ${words.length} words for targeting`);
 }
@@ -312,7 +323,6 @@ function exitGame() {
   document.getElementById("gameUI").style.display = "none";
   document.getElementById("exitGame").style.display = "none";
   document.getElementById("destroy-btn").style.display = "block";
-  // Clear game elements
   bullets.forEach((bullet) => bullet.element.remove());
   characters.forEach((character) => character.element.remove());
   bullets = [];
@@ -365,10 +375,8 @@ function shoot() {
 function fragmentWord(word, hitX, hitY) {
   const rect = word.element.getBoundingClientRect();
   const text = word.text;
-  // Hide the word immediately
   word.element.style.visibility = "hidden";
   word.destroyed = true;
-  // Create character fragments
   for (let i = 0; i < text.length; i++) {
     const char = document.createElement("div");
     char.className = "character";
@@ -400,6 +408,7 @@ function fragmentWord(word, hitX, hitY) {
     });
   }
   score += text.length * 10;
+  console.log("Score: ", score);
   const scoreValue = document.getElementById("score-value");
   if (scoreValue) {
     scoreValue.textContent = score;
@@ -481,6 +490,17 @@ document.addEventListener("keydown", (e) => {
   if (e.key === " " && gameActive) {
     e.preventDefault();
     shoot();
+  }
+  if ((e.key === "Escape" || e.key === "Esc") && gameActive) {
+    e.preventDefault();
+    exitGame();
+  }
+  // W/S para scroll
+  if (e.key.toLowerCase() === "w") {
+    window.scrollBy({ top: -60, behavior: "smooth" });
+  }
+  if (e.key.toLowerCase() === "s") {
+    window.scrollBy({ top: 60, behavior: "smooth" });
   }
 });
 document.addEventListener("keyup", (e) => {
