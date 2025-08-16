@@ -23,7 +23,7 @@ body.game-mode .lang-switch {
     margin-bottom: 4px !important;
   }
   .languages {
-    gap: 0 !important;
+    gap: 4px !important;
     margin-top: 0 !important;
     page-break-inside: avoid !important;
   }
