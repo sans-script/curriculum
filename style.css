@@ -1,0 +1,502 @@
+@media print {
+  body {
+    padding: 0 !important;
+  }
+  .header {
+    margin-bottom: 3px !important;
+  }
+  .header .profession {
+    margin-bottom: 2px !important;
+  }
+  .location {
+    margin-bottom: 4px !important;
+  }
+  .languages {
+    gap: 0 !important;
+    margin-top: 0 !important;
+    page-break-inside: avoid !important;
+  }
+  .languages p {
+    margin-bottom: 0 !important;
+    page-break-inside: avoid !important;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: normal;
+}
+body {
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.4;
+  color: #000;
+  background-color: #fff;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 25mm 20mm;
+  font-size: 11pt;
+  overflow-x: hidden;
+}
+
+.top-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .top-buttons {
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .contact-info {
+    flex-direction: column !important;
+    gap: 8px !important;
+    font-size: 10pt !important;
+  }
+  .contact-left,
+  .contact-right {
+    width: 100% !important;
+    gap: 2px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .contact-info p {
+    .contact-right {
+      width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;
+      text-align: right !important;
+      gap: 5px !important;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3px;
+    gap: 10px;
+  }
+  .contact-info strong {
+    flex: 1 1 auto;
+    text-align: left;
+    min-width: 90px;
+  }
+  .contact-info a {
+    text-align: right !important;
+    max-width: 100% !important;
+    word-break: break-all !important;
+    max-width: 60%;
+  }
+  .top-buttons {
+    display: flex;
+    width: 100%;
+    height: 50px;
+  }
+}
+body.game-mode {
+  cursor: none !important;
+}
+body.shooting-cursor {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+@media (max-width: 800px) {
+  #gameboy-controls {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+  }
+  .gb-dpad-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+    border-radius: 50%;
+    padding: 5px;
+    opacity: 0.3;
+    background: #bdbdbd;
+  }
+  .gb-dpad-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .gb-dpad {
+    pointer-events: auto;
+    opacity: 0.7;
+    background-color: #444;
+    border: none;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    margin: 0;
+    transition: opacity 0.2s;
+  }
+  .gb-dpad:active {
+    opacity: 1;
+  }
+  .gb-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+  }
+  .gb-btn {
+    pointer-events: auto;
+    opacity: 0.7;
+    background: #888;
+    border-radius: 50%;
+    border: none;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    transition: opacity 0.2s;
+    background: linear-gradient(145deg, #b0b0b0 60%, #888 100%);
+  }
+  .gb-btn:active {
+    opacity: 1;
+  }
+
+  #gb-up {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  #gb-down {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  #gb-right {
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  #gb-left {
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  #score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .score-label,
+  #score-value {
+    display: block;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.header h1 {
+  font-size: 24pt;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 6px;
+}
+.header .profession {
+  font-size: 13pt;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 8px;
+}
+.location {
+  font-size: 11pt;
+  margin-bottom: 15px;
+}
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11pt;
+}
+.contact-left,
+.contact-right {
+  flex: 1;
+}
+.contact-left {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contact-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-info p {
+  margin-bottom: 3px;
+}
+.contact-info strong {
+  font-weight: bold;
+}
+.contact-info a {
+  color: #000;
+  text-decoration: underline;
+}
+.divider {
+  border-bottom: 2px solid #000;
+  margin: 5px 0 5px 0;
+}
+.section-title {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 12px;
+}
+.summary {
+  text-align: justify;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.job-title {
+  font-size: 11pt;
+  margin-bottom: 2px;
+}
+.job-title span {
+  font-weight: bold;
+}
+.company {
+  font-size: 11pt;
+}
+.company span {
+  font-weight: bold;
+}
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.job-description {
+  text-align: justify;
+  line-height: 1.4;
+}
+.job-description p {
+  margin-bottom: 5px;
+}
+.bullet-points {
+  margin-left: 26px;
+}
+.bullet-points li {
+  margin-bottom: 6px;
+  text-align: justify;
+}
+.degree {
+  font-weight: bold;
+  font-size: 11pt;
+  margin-bottom: 2px;
+}
+.institution {
+  font-size: 11pt;
+  margin-bottom: 2px;
+}
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.period {
+  font-size: 11pt;
+  display: inline-block;
+  min-width: 230px;
+  font-variant-numeric: tabular-nums;
+}
+.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.languages p {
+  font-size: 11pt;
+}
+.languages strong {
+  font-weight: bold;
+}
+/* Botões de topo consistentes */
+.lang-switch,
+.print-btn,
+.destroy-btn,
+#exitGame {
+  font-size: 0.85rem;
+  background: #f7f7f7;
+  border: 1px solid #d0d0d0;
+  border-radius: 18px;
+  padding: 2px 13px;
+  min-width: 36px;
+  min-height: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  opacity: 0.75;
+  z-index: 10;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  user-select: none;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+.lang-switch:hover,
+.print-btn:hover,
+.destroy-btn:hover,
+#exitGame:hover {
+  opacity: 1;
+}
+/* Game Styles */
+body.game-mode {
+  overflow-y: auto;
+  height: auto;
+}
+.word {
+  display: inline;
+  cursor: inherit;
+}
+#ship {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 15px;
+  background: black;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  display: none;
+  z-index: 1000;
+}
+.bullet {
+  position: fixed;
+  width: 3px;
+  height: 10px;
+  background: black;
+  z-index: 999;
+  border-radius: 1px;
+}
+.character {
+  position: fixed;
+  font-size: 11pt;
+  color: black;
+  pointer-events: none;
+  z-index: 998;
+}
+#gameUI {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  z-index: 1001;
+  display: none;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+}
+#score {
+  font-size: 12px;
+  margin-bottom: 4px;
+  font-weight: normal;
+  color: #444;
+}
+#instructions {
+  font-size: 11px;
+  color: #666;
+}
+#gameContainer {
+  position: relative;
+  height: auto;
+  overflow: visible;
+}
+body.game-mode #curriculum-root {
+  transform: none;
+  transition: none;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    max-width: 100vw !important;
+  }
+  .divider {
+    border-bottom: 1px solid #000 !important;
+    margin: 8px 0 !important;
+  }
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  .section,
+  .header,
+  .contact-info,
+  .education-item,
+  .experience-item {
+    page-break-inside: avoid;
+  }
+  html,
+  body {
+    width: 210mm;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  .top-buttons {
+    display: none !important;
+  }
+  .contact-info {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+  .contact-info p {
+    display: block !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    width: auto !important;
+    margin-bottom: 3px !important;
+    gap: 0 !important;
+  }
+  .contact-info strong {
+    text-align: left !important;
+    min-width: 90px !important;
+  }
+  .contact-info a {
+    text-align: left !important;
+    max-width: 100% !important;
+    word-break: break-all !important;
+  }
+}
