@@ -129,10 +129,11 @@ body.shooting-cursor {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 50px;
+    bottom: 80px;
     z-index: 2000;
     display: flex;
     justify-content: space-around;
+    gap: 100px;
     pointer-events: none;
   }
   .gb-dpad-group {
@@ -141,7 +142,7 @@ body.shooting-cursor {
     align-items: center;
     pointer-events: auto;
     border-radius: 50%;
-    padding: 5px;
+    padding: 2.5px;
     opacity: 0.3;
     background: #bdbdbd;
   }
@@ -179,12 +180,12 @@ body.shooting-cursor {
     background: #888;
     border-radius: 50%;
     border: none;
-    width: 48px;
-    height: 48px;
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 32px;
     color: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin: 0;
