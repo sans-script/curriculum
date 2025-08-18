@@ -29,8 +29,8 @@ const curriculumEN = {
     },
   ],
   summary: [
-    "Frontend Developer with one year of experience in web application development using modern frameworks such as Angular and Next.js, with a focus on responsive layouts.",
-    "Recognized for my quick learning ability and advanced problem-solving skills, I am highly organized and effective in collaborating and providing constructive feedback. With a strong enthusiasm for technology and dedication to every project, I am always seeking new opportunities for learning and professional growth.",
+    "Frontend Developer with one year of experience in web application development using modern frameworks such as Angular and Next.js, focusing on responsive layouts, performance, and security. Additionally, I have experience with agile methodologies such as Scrum and Kanban.",
+    "Recognized for my quick learning ability and advanced problem-solving skills, I am highly organized and effective in collaborating and providing constructive feedback. With a strong enthusiasm for technology and involvement in every project, I am always seeking new opportunities for learning and professional development.",
   ],
   experience: [
     {
@@ -41,9 +41,9 @@ const curriculumEN = {
       description:
         "Act as an instructor for new frontend team members, sharing knowledge on tools and best practices within the startup.",
       bullets: [
-        "Responsible for developing interfaces using Angular and Tailwind CSS, focusing on creating reusable and efficient components for a UI library.",
+        "Responsible for developing interfaces using Angular and Tailwind CSS, focusing on creating reusable and efficient components for a UI library and API integration.",
         "Apply Test-Driven Development (TDD) practices, including writing unit tests with Jasmine and Karma.",
-        "Git and GitHub for code versioning and team collaboration.",
+        "Experience with agile methodologies (Scrum and Kanban) for organizing and tracking team tasks, as well as Git and GitHub for code versioning and team collaboration.",
       ],
     },
     {
@@ -54,7 +54,7 @@ const curriculumEN = {
       description:
         "Government program linked to the State Secretariat of Science, Technology, and Innovation.",
       bullets: [
-        "Led the development of projects in innovation, entrepreneurship, technology, sustainability, and social innovation, creating fullstack systems with React, Next.js, Tailwind CSS, Docker, and PostgreSQL in collaboration with a multidisciplinary team of designers and back-end developers.",
+        "Worked on the development of projects in innovation, entrepreneurship, technology, sustainability, and social innovation, leading the creation of fullstack systems with React, Next.js, TypeScript, Tailwind CSS, Docker, and PostgreSQL in collaboration with a multidisciplinary team of designers and backend developers.",
         "Achieved 2nd place in the Hackathon of the Trilhas Inova 2B 2025 Program.",
       ],
     },

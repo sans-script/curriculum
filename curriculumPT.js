@@ -29,8 +29,8 @@ const curriculumPT = {
     },
   ],
   summary: [
-    "Desenvolvedor Frontend com um ano de experiência no desenvolvimento de aplicações web utilizando frameworks modernos como Angular e Next.js, com foco em layouts responsivos.",
-    "Reconhecido por minha rápida capacidade de aprendizado e por habilidades avançadas de resolução de problemas, sou altamente organizado e eficaz em colaborar e fornecer feedback construtivo. Com um forte entusiasmo por tecnologia e envolvimento em cada projeto, estou sempre em busca de novas oportunidades de aprendizado e desenvolvimento.",
+    "Desenvolvedor Frontend com um ano de experiência no desenvolvimento de aplicações web utilizando frameworks modernos como Angular e Next.js, com foco em layouts responsivos, performance e segurança. Além disso, também tenho experiência com metodologias ágeis, como Scrum e Kanban.",
+    "Reconhecido pela rápida capacidade de aprendizado e por habilidades avançadas de resolução de problemas, sou altamente organizado e eficaz em colaborar e fornecer feedback construtivo. Com um forte entusiasmo por tecnologia e envolvimento em cada projeto, estou sempre em busca de novas oportunidades de aprendizado e desenvolvimento.",
   ],
   experience: [
     {
@@ -41,9 +41,9 @@ const curriculumPT = {
       description:
         "Atuo como instrutor para novos membros da equipe de frontend, compartilhando conhecimentos sobre ferramentas e melhores práticas dentro da Startup.",
       bullets: [
-        "Responsável pelo desenvolvimento de interfaces com Angular e Tailwind CSS, focando na criação de componentes reutilizáveis e eficientes para composição de uma biblioteca de UI.",
+        "Responsável pelo desenvolvimento de interfaces com Angular e Tailwind CSS, focando na criação de componentes reutilizáveis e eficientes para composição de uma biblioteca de UI e integração com APIs RESTful.",
         "Aplicação de práticas de TDD (Test-Driven Development) com criação de testes unitários utilizando Jasmine e Karma.",
-        "Git e GitHub para versionamento de código e colaboração em equipe.",
+        "Experiência com metodologias ágeis (Scrum e Kanban) para organização e acompanhamento das demandas do time, além de Git e GitHub para versionamento de código e colaboração em equipe.",
       ],
     },
     {
@@ -54,7 +54,7 @@ const curriculumPT = {
       description:
         "Programa do Governo do Estado veiculado à Secretaria de Estado da Ciência, Tecnologia e Inovação.",
       bullets: [
-        "Atuei no desenvolvimento de projetos em inovação, empreendedorismo, tecnologia, sustentabilidade e inovação social, liderando na criação de sistemas fullstack com React, Next.js, Tailwind CSS, Docker e PostgreSQL em colaboração com uma equipe multidisciplinar formada por designers e backend.",
+        "Atuei no desenvolvimento de projetos em inovação, empreendedorismo, tecnologia, sustentabilidade e inovação social, liderando a criação de sistemas fullstack com React, Next.js, TypeScript, Tailwind CSS, Docker e PostgreSQL em colaboração com uma equipe multidisciplinar formada por designers e backend.",
         "Conquistei o 2º lugar no Hackathon do Programa Trilhas Inova 2B 2025.",
       ],
     },
