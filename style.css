@@ -1,37 +1,4 @@
-body.game-mode .top-buttons,
-body.game-mode .top-buttons * {
-  cursor: auto !important;
-}
-body.game-mode .print-btn,
-body.game-mode .lang-switch {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
-  pointer-events: none !important;
-  filter: grayscale(0.7);
-}
-@media print {
-  body {
-    padding: 0 !important;
-  }
-  .header {
-    margin-bottom: 3px !important;
-  }
-  .header .profession {
-    margin-bottom: 2px !important;
-  }
-  .location {
-    margin-bottom: 4px !important;
-  }
-  .languages {
-    gap: 4px !important;
-    margin-top: 0 !important;
-    page-break-inside: avoid !important;
-  }
-  .languages p {
-    margin-bottom: 0 !important;
-    page-break-inside: avoid !important;
-  }
-}
+/* --- Reset & Base --- */
 * {
   margin: 0;
   padding: 0;
@@ -49,7 +16,79 @@ body {
   font-size: 11pt;
   overflow-x: hidden;
 }
+a {
+  color: #000;
+  text-decoration: underline;
+}
 
+/* --- Structural Layout --- */
+#gameContainer {
+  position: relative;
+  height: auto;
+  overflow: visible;
+}
+.header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.header h1 {
+  font-size: 24pt;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 6px;
+}
+.header .profession {
+  font-size: 13pt;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 8px;
+}
+.location {
+  font-size: 11pt;
+  margin-bottom: 15px;
+}
+.divider {
+  border-bottom: 2px solid #000;
+  margin: 5px 0 5px 0;
+}
+.section-title {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+/* --- Contact --- */
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11pt;
+}
+.contact-left,
+.contact-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contact-left {
+  text-align: left;
+}
+.contact-right {
+  text-align: right;
+}
+.contact-info p {
+  margin-bottom: 3px;
+}
+.contact-info strong {
+  font-weight: bold;
+}
+.contact-info a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* --- Top Buttons --- */
 .top-buttons {
   display: flex;
   gap: 10px;
@@ -59,16 +98,226 @@ body {
   margin-bottom: 18px;
   box-sizing: border-box;
 }
+.lang-switch,
+.print-btn,
+.destroy-btn,
+#exitGame {
+  font-size: 0.85rem;
+  background: #f7f7f7;
+  border: 1px solid #d0d0d0;
+  border-radius: 18px;
+  padding: 2px 13px;
+  min-width: 36px;
+  min-height: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  opacity: 0.75;
+  z-index: 10;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  user-select: none;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+.lang-switch:hover,
+.print-btn:hover,
+.destroy-btn:hover,
+#exitGame:hover {
+  opacity: 1;
+}
+
+/* --- Summary --- */
+.summary {
+  text-align: justify;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --- Experience --- */
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.job-title {
+  font-size: 11pt;
+  margin-bottom: 2px;
+}
+.job-title-span {
+  font-weight: bold;
+}
+.company {
+  font-size: 11pt;
+}
+.company-name {
+  font-weight: bold;
+}
+.job-description {
+  text-align: justify;
+  line-height: 1.4;
+}
+.job-description p {
+  margin-bottom: 5px;
+}
+.bullet-points {
+  margin-left: 26px;
+}
+.bullet-points li {
+  margin-bottom: 6px;
+  text-align: justify;
+}
+
+/* --- Education --- */
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.degree {
+  font-weight: bold;
+  font-size: 11pt;
+  margin-bottom: 2px;
+}
+.institution {
+  font-size: 11pt;
+  margin-bottom: 2px;
+}
+.period {
+  font-size: 11pt;
+  display: inline-block;
+  min-width: 230px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Languages --- */
+.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.languages p {
+  font-size: 11pt;
+}
+.languages strong {
+  font-weight: bold;
+}
+
+/* --- Game UI --- */
+#ship {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 15px;
+  background: black;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  display: none;
+  z-index: 1000;
+}
+.bullet {
+  position: fixed;
+  width: 3px;
+  height: 10px;
+  background: black;
+  z-index: 999;
+  border-radius: 1px;
+}
+.character {
+  position: fixed;
+  font-size: 11pt;
+  color: black;
+  pointer-events: none;
+  z-index: 998;
+}
+#gameUI {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  z-index: 1001;
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* --- Score and Instructions --- */
+#score {
+  font-size: 12px;
+  margin-bottom: 4px;
+  font-weight: normal;
+  color: #444;
+  margin-left: -14px;
+}
+.score-label,
+#score-value {
+  display: inline;
+  font-size: 12px;
+  color: #444;
+  font-weight: normal;
+}
+.instructions {
+  font-size: 12px;
+  color: #444;
+  font-weight: normal;
+  margin-bottom: 4px;
+  margin-left: -14px;
+}
+
+/* --- Words --- */
+.word {
+  display: inline;
+  cursor: inherit;
+}
+
+/* --- Game Mode States --- */
+body.game-mode {
+  cursor: none !important;
+  overflow-y: auto;
+  height: auto;
+}
+body.game-mode .top-buttons,
+body.game-mode .top-buttons * {
+  cursor: auto !important;
+}
+body.game-mode .print-btn,
+body.game-mode .lang-switch {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  filter: grayscale(0.7);
+}
+body.shooting-cursor {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+body.game-mode #curriculum-root {
+  transform: none;
+  transition: none;
+}
+
+/* --- Responsive --- */
 @media (max-width: 1100px) {
   .instructions {
     display: none !important;
   }
 }
-
 @media (max-width: 800px) {
   .top-buttons {
     justify-content: center;
     margin-bottom: 18px;
+    display: flex;
+    width: 100%;
+    height: 50px;
   }
   .contact-info {
     flex-direction: column !important;
@@ -83,14 +332,6 @@ body {
     flex-direction: column !important;
   }
   .contact-info p {
-    .contact-right {
-      width: 100% !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-end !important;
-      text-align: right !important;
-      gap: 5px !important;
-    }
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -109,22 +350,6 @@ body {
     word-break: break-all !important;
     max-width: 60%;
   }
-  .top-buttons {
-    display: flex;
-    width: 100%;
-    height: 50px;
-  }
-}
-body.game-mode {
-  cursor: none !important;
-}
-body.shooting-cursor {
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  user-select: none !important;
-}
-@media (max-width: 800px) {
   #gameboy-controls {
     position: fixed;
     left: 0;
@@ -177,7 +402,7 @@ body.shooting-cursor {
   .gb-btn {
     pointer-events: auto;
     opacity: 0.7;
-    background: #888;
+    background: linear-gradient(145deg, #b0b0b0 60%, #888 100%);
     border-radius: 50%;
     border: none;
     width: 70px;
@@ -190,17 +415,14 @@ body.shooting-cursor {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin: 0;
     transition: opacity 0.2s;
-    background: linear-gradient(145deg, #b0b0b0 60%, #888 100%);
   }
   .gb-btn:active {
     opacity: 1;
   }
-
   #gb-up {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
-
   #gb-down {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -213,10 +435,6 @@ body.shooting-cursor {
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
   }
-}
-
-#score {
-  margin-left: -14px;
 }
 @media (max-width: 600px) {
   #score {
@@ -231,253 +449,33 @@ body.shooting-cursor {
   }
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 15px;
-}
-.header h1 {
-  font-size: 24pt;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 6px;
-}
-.header .profession {
-  font-size: 13pt;
-  font-weight: 500;
-  color: #222;
-  margin-bottom: 8px;
-}
-.location {
-  font-size: 11pt;
-  margin-bottom: 15px;
-}
-.contact-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11pt;
-}
-.contact-left,
-.contact-right {
-  flex: 1;
-}
-.contact-left {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.contact-right {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.contact-info p {
-  margin-bottom: 3px;
-}
-.contact-info strong {
-  font-weight: bold;
-}
-.contact-info a {
-  color: #000;
-  text-decoration: underline;
-}
-.divider {
-  border-bottom: 2px solid #000;
-  margin: 5px 0 5px 0;
-}
-.section-title {
-  font-size: 14pt;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 12px;
-}
-.summary {
-  text-align: justify;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.job-title {
-  font-size: 11pt;
-  margin-bottom: 2px;
-}
-.job-title-span {
-  font-weight: bold;
-}
-.company {
-  font-size: 11pt;
-}
-.company-name {
-  font-weight: bold;
-}
-.experience {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.job-description {
-  text-align: justify;
-  line-height: 1.4;
-}
-.job-description p {
-  margin-bottom: 5px;
-}
-.bullet-points {
-  margin-left: 26px;
-}
-.bullet-points li {
-  margin-bottom: 6px;
-  text-align: justify;
-}
-.degree {
-  font-weight: bold;
-  font-size: 11pt;
-  margin-bottom: 2px;
-}
-.institution {
-  font-size: 11pt;
-  margin-bottom: 2px;
-}
-.education {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.period {
-  font-size: 11pt;
-  display: inline-block;
-  min-width: 230px;
-  font-variant-numeric: tabular-nums;
-}
-.languages {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.languages p {
-  font-size: 11pt;
-}
-.languages strong {
-  font-weight: bold;
-}
-.lang-switch,
-.print-btn,
-.destroy-btn,
-#exitGame {
-  font-size: 0.85rem;
-  background: #f7f7f7;
-  border: 1px solid #d0d0d0;
-  border-radius: 18px;
-  padding: 2px 13px;
-  min-width: 36px;
-  min-height: 20px;
-  box-sizing: border-box;
-  cursor: pointer;
-  opacity: 0.75;
-  z-index: 10;
-  transition: opacity 0.2s, box-shadow 0.2s;
-  user-select: none;
-  color: #333;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 400;
-  line-height: 1.1;
-  text-align: center;
-  vertical-align: middle;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-}
-.lang-switch:hover,
-.print-btn:hover,
-.destroy-btn:hover,
-#exitGame:hover {
-  opacity: 1;
-}
-body.game-mode {
-  overflow-y: auto;
-  height: auto;
-}
-.word {
-  display: inline;
-  cursor: inherit;
-}
-#ship {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 15px;
-  background: black;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  display: none;
-  z-index: 1000;
-}
-.bullet {
-  position: fixed;
-  width: 3px;
-  height: 10px;
-  background: black;
-  z-index: 999;
-  border-radius: 1px;
-}
-.character {
-  position: fixed;
-  font-size: 11pt;
-  color: black;
-  pointer-events: none;
-  z-index: 998;
-}
-#gameUI {
-  position: fixed;
-  top: 20px;
-  left: 10px;
-  z-index: 1001;
-  display: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-.score-label,
-#score-value {
-  display: inline;
-  font-size: 12px;
-  color: #444;
-  font-weight: normal;
-}
-#score {
-  font-size: 12px;
-  margin-bottom: 4px;
-  font-weight: normal;
-  color: #444;
-}
-.instructions {
-  font-size: 12px;
-  color: #444;
-  font-weight: normal;
-  margin-bottom: 4px;
-  margin-left: -14px;
-}
-#gameContainer {
-  position: relative;
-  height: auto;
-  overflow: visible;
-}
-body.game-mode #curriculum-root {
-  transform: none;
-  transition: none;
-}
-
+/* --- Print --- */
 @media print {
   body {
+    padding: 0 !important;
     background: #fff !important;
     color: #000 !important;
     margin: 0 !important;
-    padding: 0 !important;
     box-shadow: none !important;
     max-width: 100vw !important;
+  }
+  .header {
+    margin-bottom: 3px !important;
+  }
+  .header .profession {
+    margin-bottom: 2px !important;
+  }
+  .location {
+    margin-bottom: 4px !important;
+  }
+  .languages {
+    gap: 4px !important;
+    margin-top: 0 !important;
+    page-break-inside: avoid !important;
+  }
+  .languages p {
+    margin-bottom: 0 !important;
+    page-break-inside: avoid !important;
   }
   .divider {
     border-bottom: 1px solid #000 !important;

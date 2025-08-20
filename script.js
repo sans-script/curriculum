@@ -1,34 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-  if (!isMobile()) {
-    var gbControls = document.getElementById("gameboy-controls");
-    if (gbControls) gbControls.parentNode.removeChild(gbControls);
-  }
-});
-document.addEventListener("mousedown", function (e) {
-  if (
-    e.button === 0 &&
-    gameActive &&
-    !isMobile() &&
-    !e.target.closest(
-      ".lang-switch, .print-btn, .destroy-btn, #exitGame, #gameboy-controls, .gb-btn, .gb-dpad"
-    )
-  ) {
-    e.preventDefault();
-    document.body.classList.add("shooting-cursor");
-    shoot();
-  }
-});
+// ===================
+// Game State Variables
+// ===================
+let gameActive = false;
+let shipX = window.innerWidth / 2;
+let bullets = [];
+let characters = [];
+let score = 0;
+let words = [];
+let canShoot = true;
+let shootCooldown = 150;
 
-document.addEventListener("mouseup", function (e) {
-  document.body.classList.remove("shooting-cursor");
-});
+// Language
+let currentLang = detectBrowserLanguage();
 
-function showGameboyControls(show) {
-  const el = document.getElementById("gameboy-controls");
-  if (!el) return;
-  el.style.display = show ? "flex" : "none";
-}
+// // Language Keys
+const keys = {};
 
+// ===================
+// Utility Functions
+// ===================
+
+// Check if device is mobile
 function isMobile() {
   return (
     window.innerWidth <= 800 &&
@@ -38,67 +30,18 @@ function isMobile() {
   );
 }
 
-if (isMobile()) {
-  document
-    .getElementById("gb-left")
-    .addEventListener("touchstart", function (e) {
-      e.preventDefault();
-      keys["a"] = true;
-    });
-  document.getElementById("gb-left").addEventListener("touchend", function (e) {
-    e.preventDefault();
-    keys["a"] = false;
-  });
-  document
-    .getElementById("gb-right")
-    .addEventListener("touchstart", function (e) {
-      e.preventDefault();
-      keys["d"] = true;
-    });
-  document
-    .getElementById("gb-right")
-    .addEventListener("touchend", function (e) {
-      e.preventDefault();
-      keys["d"] = false;
-    });
-  document.getElementById("gb-up").addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    window.scrollBy({ top: -60, behavior: "smooth" });
-  });
-  document
-    .getElementById("gb-down")
-    .addEventListener("touchstart", function (e) {
-      e.preventDefault();
-      window.scrollBy({ top: 60, behavior: "smooth" });
-    });
-  document
-    .getElementById("gb-fire")
-    .addEventListener("touchstart", function (e) {
-      e.preventDefault();
-      shoot();
-    });
+// Show or hide Gameboy controls (for mobile)
+function showGameboyControls(show) {
+  const el = document.getElementById("gameboy-controls");
+  if (!el) return;
+  el.style.display = show ? "flex" : "none";
 }
 
-const oldStartGame = startGame;
-startGame = function () {
-  oldStartGame.apply(this, arguments);
-  if (isMobile()) showGameboyControls(true);
-};
-const oldExitGame = exitGame;
-exitGame = function () {
-  oldExitGame.apply(this, arguments);
-  if (isMobile()) showGameboyControls(false);
-};
+// ===================
+// Curriculum Rendering Functions
+// ===================
 
-let gameActive = false;
-let shipX = window.innerWidth / 2;
-let bullets = [];
-let characters = [];
-let score = 0;
-let words = [];
-let canShoot = true;
-let shootCooldown = 150;
-const keys = {};
+// Create header section
 function createHeader({ name, location }) {
   return `
           <div class="header">
@@ -108,6 +51,8 @@ function createHeader({ name, location }) {
           </div>
         `;
 }
+
+// Create contacts section
 function createContacts(contacts) {
   const left = contacts
     .filter((c) => c.side === "left")
@@ -130,9 +75,13 @@ function createContacts(contacts) {
           </div>
         `;
 }
+
+// Create divider
 function createDivider() {
   return `<div class="divider"></div>`;
 }
+
+// Create a generic section
 function createSection(title, content) {
   return `
           <div class="section">
@@ -141,11 +90,15 @@ function createSection(title, content) {
           </div>
         `;
 }
+
+// Create summary section
 function createSummary(summary) {
   return `<div class="summary">${summary
     .map((p) => `<p>${p}</p>`)
     .join("")}</div>`;
 }
+
+// Create experience section
 function createExperience(experiences) {
   return `
           <div class="experience">
@@ -153,12 +106,12 @@ function createExperience(experiences) {
               .map(
                 (exp) => `
               <div class="experience-item">
-                <div class="job-title"><span class="job-title-span">${exp.title}</span>, ${
-                  exp.period
-                }</div>
-                <div class="company"><span class="company-name">${exp.company}</span>, ${
-                  exp.location
-                }</div>
+                <div class="job-title"><span class="job-title-span">${
+                  exp.title
+                }</span>, ${exp.period}</div>
+                <div class="company"><span class="company-name">${
+                  exp.company
+                }</span>, ${exp.location}</div>
                 <div class="job-description">
                   <p>${exp.description}</p>
                   <ul class="bullet-points">
@@ -172,6 +125,8 @@ function createExperience(experiences) {
           </div>
         `;
 }
+
+// Create education section
 function createEducation(education) {
   return `
           <div class="education">
@@ -189,6 +144,8 @@ function createEducation(education) {
           </div>
         `;
 }
+
+// Create languages section
 function createLanguages(languages) {
   return `
           <div class="languages">
@@ -200,7 +157,8 @@ function createLanguages(languages) {
           </div>
         `;
 }
-let currentLang = "pt";
+
+// Render the curriculum to the DOM
 function renderCurriculum(lang) {
   const data = lang === "en" ? curriculumEN : curriculumPT;
   document.documentElement.lang = lang === "en" ? "en-US" : "pt-BR";
@@ -232,6 +190,12 @@ function renderCurriculum(lang) {
   document.getElementById("lang-switch").textContent =
     lang === "en" ? "PT" : "EN";
 }
+
+// ===================
+// Game Preparation Functions
+// ===================
+
+// Wrap all words in the curriculum and instructions in span elements for targeting
 function wrapTextInWords() {
   if (words.length) return;
   const roots = [
@@ -276,6 +240,12 @@ function wrapTextInWords() {
   });
   console.log(`Found ${words.length} words for targeting`);
 }
+
+// ===================
+// Game Control Functions
+// ===================
+
+// Start the game
 function startGame() {
   document.body.classList.add("game-mode");
   document.getElementById("ship").style.display = "block";
@@ -316,6 +286,8 @@ function startGame() {
 
   gameLoop();
 }
+
+// Exit the game and reset state
 function exitGame() {
   gameActive = false;
   document.body.classList.remove("game-mode");
@@ -333,6 +305,12 @@ function exitGame() {
 
   renderCurriculum(currentLang);
 }
+
+// ===================
+// Game Mechanics Functions
+// ===================
+
+// Update ship position based on keys pressed
 function updateShip() {
   if (!gameActive) return;
   if (keys["a"] || keys["A"] || keys["ArrowLeft"]) {
@@ -347,6 +325,8 @@ function updateShip() {
   const ship = document.getElementById("ship");
   ship.style.left = shipX + "px";
 }
+
+// Shoot a bullet from the ship
 function shoot() {
   if (!canShoot || !gameActive) return;
   const ship = document.getElementById("ship");
@@ -372,6 +352,8 @@ function shoot() {
     canShoot = true;
   }, shootCooldown);
 }
+
+// Fragment a word into characters with explosion effect
 function fragmentWord(word, hitX, hitY) {
   const rect = word.element.getBoundingClientRect();
   const text = word.text;
@@ -419,6 +401,8 @@ function fragmentWord(word, hitX, hitY) {
       "</span>";
   }
 }
+
+// Check for collisions between bullets and words
 function checkCollisions() {
   if (!gameActive) return;
   for (let bi = bullets.length - 1; bi >= 0; bi--) {
@@ -445,6 +429,8 @@ function checkCollisions() {
     }
   }
 }
+
+// Update bullet positions and remove off-screen bullets
 function updateBullets() {
   if (!gameActive) return;
   for (let i = bullets.length - 1; i >= 0; i--) {
@@ -457,6 +443,8 @@ function updateBullets() {
     }
   }
 }
+
+// Update character fragments (explosion effect)
 function updateCharacters() {
   if (!gameActive) return;
   characters.forEach((character, index) => {
@@ -477,6 +465,8 @@ function updateCharacters() {
     }
   });
 }
+
+// Main game loop
 function gameLoop() {
   if (!gameActive) return;
   updateShip();
@@ -485,6 +475,39 @@ function gameLoop() {
   checkCollisions();
   requestAnimationFrame(gameLoop);
 }
+
+// ===================
+// Event Listeners
+// ===================
+
+// DOMContentLoaded: Remove Gameboy controls on desktop
+document.addEventListener("DOMContentLoaded", function () {
+  if (!isMobile()) {
+    var gbControls = document.getElementById("gameboy-controls");
+    if (gbControls) gbControls.parentNode.removeChild(gbControls);
+  }
+});
+
+// Mouse events for shooting (desktop)
+document.addEventListener("mousedown", function (e) {
+  if (
+    e.button === 0 &&
+    gameActive &&
+    !isMobile() &&
+    !e.target.closest(
+      ".lang-switch, .print-btn, .destroy-btn, #exitGame, #gameboy-controls, .gb-btn, .gb-dpad"
+    )
+  ) {
+    e.preventDefault();
+    document.body.classList.add("shooting-cursor");
+    shoot();
+  }
+});
+document.addEventListener("mouseup", function (e) {
+  document.body.classList.remove("shooting-cursor");
+});
+
+// Keyboard controls
 document.addEventListener("keydown", (e) => {
   keys[e.key] = true;
   if (e.key === " " && gameActive) {
@@ -495,7 +518,7 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     exitGame();
   }
-  // W/S para scroll
+  // W/S for scrolling
   if (e.key.toLowerCase() === "w") {
     window.scrollBy({ top: -60, behavior: "smooth" });
   }
@@ -506,6 +529,68 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener("keyup", (e) => {
   keys[e.key] = false;
 });
+
+// ===================
+// Mobile Controls
+// ===================
+if (isMobile()) {
+  document
+    .getElementById("gb-left")
+    .addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      keys["a"] = true;
+    });
+  document.getElementById("gb-left").addEventListener("touchend", function (e) {
+    e.preventDefault();
+    keys["a"] = false;
+  });
+  document
+    .getElementById("gb-right")
+    .addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      keys["d"] = true;
+    });
+  document
+    .getElementById("gb-right")
+    .addEventListener("touchend", function (e) {
+      e.preventDefault();
+      keys["d"] = false;
+    });
+  document.getElementById("gb-up").addEventListener("touchstart", function (e) {
+    e.preventDefault();
+    window.scrollBy({ top: -60, behavior: "smooth" });
+  });
+  document
+    .getElementById("gb-down")
+    .addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      window.scrollBy({ top: 60, behavior: "smooth" });
+    });
+  document
+    .getElementById("gb-fire")
+    .addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      shoot();
+    });
+}
+
+// ===================
+// Game Start/Exit Wrappers for Mobile Controls
+// ===================
+const oldStartGame = startGame;
+const oldExitGame = exitGame;
+startGame = function () {
+  oldStartGame.apply(this, arguments);
+  if (isMobile()) showGameboyControls(true);
+};
+exitGame = function () {
+  oldExitGame.apply(this, arguments);
+  if (isMobile()) showGameboyControls(false);
+};
+
+// ===================
+// UI Button Event Handlers
+// ===================
 document.getElementById("lang-switch").onclick = function () {
   if (gameActive) return;
   currentLang = currentLang === "pt" ? "en" : "pt";
@@ -518,4 +603,28 @@ document.getElementById("print-btn").onclick = function () {
 document.getElementById("destroy-btn").onclick = startGame;
 document.getElementById("exitGame").onclick = exitGame;
 
+// ===================
+// Language Detection
+// ===================
+
+// Set default language based on user's browser language
+function detectBrowserLanguage() {
+  const lang = (
+    navigator.language ||
+    navigator.userLanguage ||
+    ""
+  ).toLowerCase();
+  if (lang.startsWith("pt")) {
+    return "pt";
+  }
+  if (lang.startsWith("en")) {
+    return "en";
+  }
+  // Fallback: default to English if not Portuguese or English
+  return "en";
+}
+
+// ===================
+// Initial Render
+// ===================
 renderCurriculum(currentLang);
