@@ -1,6 +1,6 @@
 const curriculumEN = {
   name: "Alexandre da Silva Santos",
-  profession: "Frontend Developer",
+  profession: "Fullstack Developer",
   location: "São Luís, Maranhão, Brazil",
   contacts: [
     {
@@ -29,8 +29,8 @@ const curriculumEN = {
     },
   ],
   summary: [
-    "Frontend Developer with one year of experience in web application development using modern frameworks such as Angular and Next.js, focusing on responsive layouts, performance, and security. Additionally, I have experience with agile methodologies such as Scrum and Kanban.",
-    "Recognized for my quick learning ability and advanced problem-solving skills, I am highly organized and effective in collaborating and providing constructive feedback. With a strong enthusiasm for technology and involvement in every project, I am always seeking new opportunities for learning and professional development.",
+    "Fullstack Developer with one year of experience in React, Next.js, Node.js, Express.js, Docker, PostgreSQL, Git, automated testing, and production web applications, working across frontend and backend. Experience with CI/CD, agile methodologies (Scrum and Kanban), advanced English (C1), React Native (Expo), and Electron.",
+    "Recognized for fast learning ability, creativity, and problem-solving. Technology enthusiast, consistently engaged and seeking to grow with every project.",
   ],
   experience: [
     {
@@ -41,13 +41,13 @@ const curriculumEN = {
       description:
         "Act as an instructor for new frontend team members, sharing knowledge on tools and best practices within the startup.",
       bullets: [
-        "Responsible for developing interfaces using Angular and Tailwind CSS, focusing on creating reusable and efficient components for a UI library and API integration.",
+        "Responsible for developing interfaces using Angular and Tailwind CSS, focusing on creating reusable and efficient components for a UI library and integration with RESTful APIs.",
         "Apply Test-Driven Development (TDD) practices, including writing unit tests with Jasmine and Karma.",
         "Experience with agile methodologies (Scrum and Kanban) for organizing and tracking team tasks, as well as Git and GitHub for code versioning and team collaboration.",
       ],
     },
     {
-      title: "Frontend Developer Intern",
+      title: "Frontend Development Intern",
       period: "Jan 2025 - Jul 2025",
       company: "Inova Maranhão",
       location: "São Luís, Maranhão, Brazil · Hybrid",
@@ -88,7 +88,7 @@ const curriculumEN = {
     { name: "Portuguese", level: "Native" },
   ],
   sectionTitles: {
-    summary: "Summary",
+    summary: "Professional Summary",
     experience: "Experience",
     education: "Education",
     languages: "Languages",
