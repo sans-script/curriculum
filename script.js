@@ -627,4 +627,5 @@ function detectBrowserLanguage() {
 // ===================
 // Initial Render
 // ===================
+
 renderCurriculum(currentLang);
