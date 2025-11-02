@@ -450,6 +450,9 @@ body.game-mode #curriculum-root {
 }
 
 /* --- Print --- */
+
+@page { size: A4; margin: 10mm; }
+
 @media print {
   body {
     padding: 0 !important;
