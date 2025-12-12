@@ -145,7 +145,7 @@ a {
 .experience {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 .job-title {
   font-size: 11pt;
@@ -474,6 +474,18 @@ body.game-mode #curriculum-root {
   .languages {
     gap: 4px !important;
     margin-top: 0 !important;
+    page-break-inside: avoid !important;
+  }
+  .education {
+    gap: 4px !important;
+  }
+  .experience {
+    gap: 4px !important;
+  }
+  .summary {
+    gap: 4px !important;
+  }
+  .language-item {
     page-break-inside: avoid !important;
   }
   .languages p {
