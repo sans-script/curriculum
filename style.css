@@ -171,7 +171,7 @@ a {
   margin-left: 26px;
 }
 .bullet-points li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   text-align: justify;
 }
 
@@ -472,15 +472,15 @@ body.game-mode #curriculum-root {
     margin-bottom: 4px !important;
   }
   .languages {
-    gap: 4px !important;
+    gap: 10px !important;
     margin-top: 0 !important;
     page-break-inside: avoid !important;
   }
   .education {
-    gap: 4px !important;
+    gap: 10px !important;
   }
   .experience {
-    gap: 4px !important;
+    gap: 10px !important;
   }
   .summary {
     gap: 4px !important;
