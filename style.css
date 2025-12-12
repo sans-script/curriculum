@@ -171,7 +171,7 @@ a {
   margin-left: 26px;
 }
 .bullet-points li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-align: justify;
 }
 
@@ -322,7 +322,6 @@ body.game-mode #curriculum-root {
   .contact-info {
     flex-direction: column !important;
     gap: 8px !important;
-    font-size: 10pt !important;
   }
   .contact-left,
   .contact-right {
