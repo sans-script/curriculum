@@ -29,7 +29,7 @@ const curriculumPT = {
     },
   ],
   summary: [
-    "Desenvolvedor Fullstack com um ano de experiência em React, Next.js, Node.js, Express.js, Docker, PostgreSQL, Git, testes automatizados e aplicações web em produção, atuando no frontend e backend. Experiência com CI/CD, metodologias ágeis (Scrum e Kanban), inglês avançado (C1), React Native (Expo) e Electron.",
+    "Desenvolvedor fullstack com um ano de experiência em React, Next.js, Node.js, Express.js, Docker, PostgreSQL, Git, testes automatizados e aplicações web em produção, atuando tanto no frontend quanto no backend. Experiência com CI/CD, metodologias ágeis (Scrum e Kanban), inglês avançado (C1), React Native (Expo) e Electron.",
     "Reconhecido pela rápida capacidade de aprendizado, criatividade e resolução de problemas. Entusiasta de tecnologia, sempre engajado e buscando evoluir em cada projeto.",
   ],
   experience: [
@@ -39,7 +39,7 @@ const curriculumPT = {
       company: "The DevOPS Corp",
       location: "São Luís, Maranhão, Brasil · Remoto",
       description:
-        "Atuo como instrutor para novos membros da equipe de frontend, compartilhando conhecimentos sobre ferramentas e melhores práticas dentro da Startup.",
+        "Atuo como instrutor para novos membros da equipe de desenvolvimento frontend, compartilhando conhecimentos sobre ferramentas e boas práticas dentro da startup.",
       bullets: [
         "Responsável pelo desenvolvimento de interfaces com Angular e Tailwind CSS, focando na criação de componentes reutilizáveis e eficientes para composição de uma biblioteca de UI e integração com APIs RESTful.",
         "Aplicação de práticas de TDD (Test-Driven Development) com criação de testes unitários utilizando Jasmine e Karma.",
@@ -52,10 +52,10 @@ const curriculumPT = {
       company: "Inova Maranhão",
       location: "São Luís, Maranhão, Brasil · Híbrido",
       description:
-        "Programa do Governo do Estado veiculado à Secretaria de Estado da Ciência, Tecnologia e Inovação.",
+        "Programa do Governo do Estado vinculado à Secretaria de Estado da Ciência, Tecnologia e Inovação.",
       bullets: [
-        "Atuei no desenvolvimento de projetos em inovação, empreendedorismo, tecnologia, sustentabilidade e inovação social, liderando a criação de sistemas Fullstack com React, Next.js, TypeScript, Tailwind CSS, Docker e PostgreSQL em colaboração com uma equipe multidisciplinar formada por designers e backend.",
-        "Conquistei o 2º lugar no Hackathon do Programa Trilhas Inova 2B 2025.",
+        "Atuei no desenvolvimento de projetos em inovação, empreendedorismo, tecnologia, sustentabilidade e inovação social, liderando a criação de sistemas fullstack com React, Next.js, TypeScript, Tailwind CSS, Docker e PostgreSQL em colaboração com uma equipe multidisciplinar formada por designers e desenvolvedores.",
+        "Conquistamos o 2º lugar no Hackathon do Programa Trilhas Inova 2B 2025.",
       ],
     },
   ],
