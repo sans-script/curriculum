@@ -55,7 +55,7 @@ const curriculumEN = {
         "Government program linked to the State Secretariat of Science, Technology, and Innovation.",
       bullets: [
         "Worked on the development of projects in innovation, entrepreneurship, technology, sustainability, and social innovation, leading the creation of fullstack systems with React, Next.js, TypeScript, Tailwind CSS, Docker, and PostgreSQL in collaboration with a multidisciplinary team of designers and developers.",
-        "Achieved 2nd place in the Hackathon of the Trilhas Inova 2B 2025 Program.",
+        "I achieved 2nd place in the Hackathon of the Trilhas Inova 2B 2025 Program.",
       ],
     },
   ],

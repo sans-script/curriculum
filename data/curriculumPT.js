@@ -55,7 +55,7 @@ const curriculumPT = {
         "Programa do Governo do Estado vinculado à Secretaria de Estado da Ciência, Tecnologia e Inovação.",
       bullets: [
         "Atuei no desenvolvimento de projetos em inovação, empreendedorismo, tecnologia, sustentabilidade e inovação social, liderando a criação de sistemas fullstack com React, Next.js, TypeScript, Tailwind CSS, Docker e PostgreSQL em colaboração com uma equipe multidisciplinar formada por designers e desenvolvedores.",
-        "Conquistamos o 2º lugar no Hackathon do Programa Trilhas Inova 2B 2025.",
+        "Conquistei o 2º lugar no Hackathon do Programa Trilhas Inova 2B 2025.",
       ],
     },
   ],
