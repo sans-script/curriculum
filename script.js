@@ -151,7 +151,11 @@ function createLanguages(languages) {
           <div class="languages">
             ${languages
               .map(
-                (lang) => `<p><strong>${lang.name}</strong> ${lang.level}</p>`
+                (lang) => `
+              <div class="language-item">
+                <p><strong>${lang.name}</strong> ${lang.level}</p>
+              </div>
+            `
               )
               .join("")}
           </div>
