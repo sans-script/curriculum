@@ -484,7 +484,9 @@ function gameLoop() {
 
 // DOMContentLoaded: Remove Gameboy controls on desktop
 document.addEventListener("DOMContentLoaded", function () {
-  if (!isMobile()) {
+  if (isMobile()) {
+    document.body.classList.add("mobile-device");
+  } else {
     var gbControls = document.getElementById("gameboy-controls");
     if (gbControls) gbControls.parentNode.removeChild(gbControls);
   }

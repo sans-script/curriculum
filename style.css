@@ -344,6 +344,10 @@ body.game-mode #curriculum-root {
 }
 
 /* --- Responsive --- */
+body.mobile-device .instructions {
+  display: none !important;
+}
+
 @media (max-width: 1100px) {
   .instructions {
     display: none !important;
