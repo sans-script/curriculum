@@ -23,7 +23,7 @@ const keys = {};
 // Check if device is mobile
 function isMobile() {
   return (
-    window.innerWidth <= 800 &&
+    window.innerWidth <= 1366 &&
     /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
       navigator.userAgent
     )
@@ -103,15 +103,13 @@ function createExperience(experiences) {
   return `
           <div class="experience">
             ${experiences
-              .map(
-                (exp) => `
+      .map(
+        (exp) => `
               <div class="experience-item">
-                <div class="job-title"><span class="job-title-span">${
-                  exp.title
-                }</span>, ${exp.period}</div>
-                <div class="company"><span class="company-name">${
-                  exp.company
-                }</span>, ${exp.location}</div>
+                <div class="job-title"><span class="job-title-span">${exp.title
+          }</span>, ${exp.period}</div>
+                <div class="company"><span class="company-name">${exp.company
+          }</span>, ${exp.location}</div>
                 <div class="job-description">
                   <p>${exp.description}</p>
                   <ul class="bullet-points">
@@ -120,8 +118,8 @@ function createExperience(experiences) {
                 </div>
               </div>
             `
-              )
-              .join("")}
+      )
+      .join("")}
           </div>
         `;
 }
@@ -131,16 +129,16 @@ function createEducation(education) {
   return `
           <div class="education">
             ${education
-              .map(
-                (edu) => `
+      .map(
+        (edu) => `
               <div class="education-item">
                 <div class="degree">${edu.degree}</div>
                 <div class="institution">${edu.institution}</div>
                 <div class="period">${edu.period}</div>
               </div>
             `
-              )
-              .join("")}
+      )
+      .join("")}
           </div>
         `;
 }
@@ -150,14 +148,14 @@ function createLanguages(languages) {
   return `
           <div class="languages">
             ${languages
-              .map(
-                (lang) => `
+      .map(
+        (lang) => `
               <div class="language-item">
                 <p><strong>${lang.name}</strong> ${lang.level}</p>
               </div>
             `
-              )
-              .join("")}
+      )
+      .join("")}
           </div>
         `;
 }
@@ -172,24 +170,24 @@ function renderCurriculum(lang) {
           ${createContacts(data.contacts)}
           ${createDivider()}
           ${createSection(
-            data.sectionTitles.summary,
-            createSummary(data.summary)
-          )}
+    data.sectionTitles.summary,
+    createSummary(data.summary)
+  )}
           ${createDivider()}
           ${createSection(
-            data.sectionTitles.experience,
-            createExperience(data.experience)
-          )}
+    data.sectionTitles.experience,
+    createExperience(data.experience)
+  )}
           ${createDivider()}
           ${createSection(
-            data.sectionTitles.education,
-            createEducation(data.education)
-          )}
+    data.sectionTitles.education,
+    createEducation(data.education)
+  )}
           ${createDivider()}
           ${createSection(
-            data.sectionTitles.languages,
-            createLanguages(data.languages)
-          )}
+    data.sectionTitles.languages,
+    createLanguages(data.languages)
+  )}
         `;
   document.getElementById("lang-switch").textContent =
     lang === "en" ? "PT" : "EN";
